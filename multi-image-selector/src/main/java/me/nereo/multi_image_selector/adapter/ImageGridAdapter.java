@@ -131,10 +131,6 @@ public class ImageGridAdapter extends BaseAdapter {
         }
 
         mItemSize = columnWidth;
-
-        mItemLayoutParams = new GridView.LayoutParams(mItemSize, mItemSize);
-
-        notifyDataSetChanged();
     }
 
     @Override
@@ -196,11 +192,6 @@ public class ImageGridAdapter extends BaseAdapter {
             }
         }
 
-        /** Fixed View Size */
-        GridView.LayoutParams lp = (GridView.LayoutParams) view.getLayoutParams();
-        if(lp.height != mItemSize){
-            view.setLayoutParams(mItemLayoutParams);
-        }
 
         return view;
     }

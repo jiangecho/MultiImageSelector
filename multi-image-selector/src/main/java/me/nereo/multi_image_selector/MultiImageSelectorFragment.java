@@ -1,6 +1,7 @@
 package me.nereo.multi_image_selector;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -228,7 +229,12 @@ public class MultiImageSelectorFragment extends Fragment {
                 final int numCount = width / desireSize;
                 final int columnSpace = getResources().getDimensionPixelOffset(R.dimen.space_size);
                 int columnWidth = (width - columnSpace*(numCount-1)) / numCount;
+
+                mGridView.setNumColumns(numCount);
+
                 mImageAdapter.setItemSize(columnWidth);
+
+
 
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
                     mGridView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
@@ -265,7 +271,7 @@ public class MultiImageSelectorFragment extends Fragment {
      */
     private void createPopupFolderList(int width, int height) {
         mFolderPopupWindow = new ListPopupWindow(getActivity());
-        mFolderPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mFolderPopupWindow.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         mFolderPopupWindow.setAdapter(mFolderAdapter);
         mFolderPopupWindow.setContentWidth(width);
         mFolderPopupWindow.setWidth(width);
